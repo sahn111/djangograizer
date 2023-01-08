@@ -1,0 +1,67 @@
+.hero {
+    background-color: #eee;
+    height: 200px;
+  }
+
+.hero h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 6;
+  }
+
+.about {
+    background-color: #eee;
+    height: 200px;
+  }
+
+.about h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 6;
+  }
+
+.services {
+    background-color: #eee;
+    height: 200px;
+  }
+
+.services h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 6;
+  }
+
+.contact {
+    background-color: #eee;
+    height: 200px;
+  }
+
+.contact h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 6;
+  }
+
+.footer {
+    background-color: #777;
+    height: 40px;
+  }
+
+.footer p {
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+.footer2 {
+    background-color: #777;
+    height: 40px;
+  }
+
+.footer2 p {
+    margin: 0 auto;
+    line-height: 1.7;
+  }
