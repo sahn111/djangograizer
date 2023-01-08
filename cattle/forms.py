@@ -15,3 +15,10 @@ class CattleStableFrom(forms.ModelForm):
         fields = ['stable']
     
     stable = forms.ModelChoiceField(queryset=Stable.objects.all())
+
+class CattleUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Cattle
+        fields = ['id', 'stable', 'weight']
+    
+    stable = forms.ModelChoiceField(queryset=Stable.objects.all())

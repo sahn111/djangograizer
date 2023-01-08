@@ -19,7 +19,18 @@
                 {{ stable_form.as_p }}
                 <input type="submit">
             </form>
-    </div>    
+    </div> 
+    <div class="services">
+        <h2>Change Weight of Cattle</h2>
+        <form action="{% url 'cattle:update' %}" method="post">
+            {% csrf_token %}
+            <label for="id">ID: </label>
+            <input type="text" name="id"><br><br>
+            <label for="weight">Weight: </label>
+            <input type="number" step="1" name="weight"><br><br>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
     <div class="services">
         <h2>Get cattle according to weight</h2>
         <form action="{% url 'cattle:weight' %}" method="post">
@@ -49,7 +60,9 @@
                     <ul>Cattle Weight = {{ cattle.weight }}</ul>
                     <ul>Cattle Entrace Date = {{ cattle.entrance_data }}</ul>
                     <ul>Current Stable = {{ cattle.stable.name }}</ul>
+                    <ul>*Last Update = {{ cattle.last_update }}</ul>
                 </li>
+                <br>
             {% empty %}
                 <li>No Cattle</li>
             {% endfor %}
@@ -67,6 +80,7 @@
                     <ul>Stable Capacity = {{ stable.capacity }}</ul>
                     <ul>Stable Address = {{ stable.address }}</ul>
                 </li>
+                <br>
             {% empty %}
                 <li>No Stable</li>
             {% endfor %}
