@@ -1,0 +1,16 @@
+{% extends "cattle/layout.html" %}
+
+{% block body %}
+    <h1>
+        All Cattles
+    </h1>
+    <ul>
+        {% for cattle in cattles %}
+            <li>
+                <ul>Cattle ID  = {{ cattle.id }}</ul>
+                <ul>Cattle Weight = {{ cattle.weight }}</ul>
+                <ul>Cattle Entrace Date = {{ cattle.entrance_data }}</ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

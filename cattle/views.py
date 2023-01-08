@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Cattle
 
 def index(request):
-    pass
+    return render(request, "cattle/index.html",{
+        "cattles" : Cattle.objects.all()
+    })
