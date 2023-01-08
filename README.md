@@ -18,7 +18,7 @@ Project is created with:
 	
 ## Setup
 
-To run this project first create <b>.env</b> file which has example version as <b>.env.example</b>. Then go to the <b>djangoapp</b> directory and just write 
+To run this project just write 
 ```python3 manage.py runserver``` or ```python manage.py runserver``` to your comment line.
 
 After you can reach the app from <a href = 'http://127.0.0.1:8000/cattle'>Graizer Link</a>
