@@ -6,13 +6,14 @@ from django.db.models import Q
 from .models import Cattle
 from stable.models import Stable
 from stable.forms import StableForm
-from .forms import CattleForm
+from .forms import CattleForm, CattleStableFrom
 
 def index(request):
     return render(request, "cattle/index.html",{
         "cattles" : Cattle.objects.all(),
         "stables" : Stable.objects.all(),
         "cattle_form" : CattleForm,
+        "cattle_stable_form" : CattleStableFrom,
         "stable_form" : StableForm,
     })
 
@@ -26,26 +27,18 @@ def create_item(request):
 
     return HttpResponseRedirect(reverse("cattle:index"))
 
-def read_item(request, item_id):
-    item = get_object_or_404(Cattle, pk=item_id)
-    return render(request, 'items/read_cattle.html', {'item': item})
+def get_stable(request):
+    form = CattleStableFrom(request.GET)
 
-def update_item(request, item_id):
-    item = get_object_or_404(Cattle, pk=item_id)
-    item.name = request.POST['name']
-    item.description = request.POST['description']
-    item.save()
-    return render(request, 'items/update_cattle.html', {'item': item})
-
-def delete_item(request, item_id):
-    item = get_object_or_404(Cattle, pk=item_id)
-    item.delete()
-    return render(request, 'items/delete_cattle.html', {'item': item})
-
-def get_cattle(request, cattle):
-    return render(request, "cattle/cattle.html",{
-        "cattle" : Cattle.objects.filter(id=cattle)
-    })
+    if form.is_valid():
+        stable = form.cleaned_data['stable']
+        return render(request, "cattle/index.html", {
+            "cattles" : Cattle.objects.filter(Q(stable=stable)),
+            "stables" : Stable.objects.all(),
+            "cattle_form" : CattleForm,
+            "cattle_stable_form" : CattleStableFrom,
+            "stable_form" : StableForm,
+        })
 
 def get_weight(request):
     form = CattleForm(request.POST)
@@ -56,6 +49,7 @@ def get_weight(request):
         return render(request, "cattle/index.html", {
             "cattles" : Cattle.objects.filter(Q(weight__gt=weight) & Q(stable=stable)),
             "stables" : Stable.objects.all(),
+            "cattle_stable_form" : CattleStableFrom,
             "cattle_form" : CattleForm,
             "stable_form" : StableForm,
         })

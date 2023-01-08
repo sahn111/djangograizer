@@ -21,10 +21,18 @@
             </form>
     </div>    
     <div class="services">
-        <h2>Get according to weight</h2>
+        <h2>Get cattle according to weight</h2>
         <form action="{% url 'cattle:weight' %}" method="post">
             {% csrf_token %}
             {{ cattle_form.as_p }}
+            <input type="submit">
+        </form>
+    </div>
+    <div class="services">
+        <h2>Get cattle according to stable</h2>
+        <form action="{% url 'cattle:stable' %}" method="get">
+            {% csrf_token %}
+            {{ cattle_stable_form.as_p }}
             <input type="submit">
         </form>
     </div>
